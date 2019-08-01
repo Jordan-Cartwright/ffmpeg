@@ -1,0 +1,36 @@
+-hide_banner -loglevel info -strict -2 -max_muxing_queue_size 512 -map 0:0 -map 0:1 -map  0:1 -c:v libx264 -c:a:0 copy -c:a:1 aac -b:a:1 128k -ac 2 -metadata:s:a:1 title='Stereo'
+Executing:
+
+ffmpeg -y -i /library/big_buck_bunny_720p_1mb.mkv
+    -hide_banner
+    -loglevel info
+    -strict
+    -2
+    -max_muxing_queue_size 512
+    -map 0:0
+    -map 0:1
+    -map  0:1
+    -c:v libx264
+    -c:a:0 copy
+    -c:a:1 aac
+    -b:a:1 128k
+    -ac 2
+    -metadata:s:a:1 title='Stereo'
+    -y /tmp/unmanic/file_conversion-1564533929.4503171/big_buck_bunny_720p_1mb-1564533929.4503253.mp4
+
+
+ffmpeg -y -i /library/big_buck_bunny_720p_1mb.mkv
+    -hide_banner
+    -loglevel info
+    -strict -2 - Enables experimental mode, more support for codecs and other things. Normal is 0 then +1 or -1 for different version. Could use "- strict experimental"
+    -max_muxing_queue_size 512 - Size of the buffer ffmpeg uses when it wait for 1 packet from both audio and video. Default should be fine?
+    -map 0:0  - First 0 identifies the first input file, the second 0 is the first stream on first input file, usually video
+    -map 0:1 - " , the second number is the 2 stream on the first input file, usually audio
+    -map  0:1 - same thing as above, but we need to add a "3rd" stream since we are generating an additional audio stream
+    -c:v libx264 - C stands for codec and the v is for video. So encode the video stream as h.264
+    -c:a:0 copy  - " and a is for audio. The 0 refers to the first audio stream. Look back at maps. In this case we are just copying over the stream
+    -c:a:1 aac - " " . The 1 refers to the second audio stream. " . In this case we can encoding it as AAC
+    -b:a:1 128k - B stands for bitrate. A for audio. 1 for the second audio stream
+    -ac 2 - Sets the number for audio channels.
+    -metadata:s:a:1 title='Stereo' - Lets you set meta to streams confusing look for - map_metadata in docs
+    -y /tmp/unmanic/file_conversion-1564533929.4503171/big_buck_bunny_720p_1mb-1564533929.4503253.mp4 - Overwrite output files without asking.
