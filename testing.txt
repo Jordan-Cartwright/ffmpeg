@@ -34,3 +34,11 @@ ffmpeg -y -i /library/big_buck_bunny_720p_1mb.mkv
     -ac 2 - Sets the number for audio channels.
     -metadata:s:a:1 title='Stereo' - Lets you set meta to streams confusing look for - map_metadata in docs
     -y /tmp/unmanic/file_conversion-1564533929.4503171/big_buck_bunny_720p_1mb-1564533929.4503253.mp4 - Overwrite output files without asking.
+
+
+
+ffmpeg -i C:\Users\Jordan\Documents\GitHub\ffmpeg\videos\big_buck_bunny_720p_1mb.mp4 -map 0:0 -map 0:1 -map 0:1 -ac 2 -b:a:1 128k -c:a:0 copy -c:a:1 aac -c:v libx264 done/out_put_test.mkv -y -loglevel info -strict -2
+ffmpeg -i C:\Users\Jordan\Documents\GitHub\ffmpeg\videos\big_buck_bunny_720p_1mb.mp4 -map 0:0 -map 0:1 -map 0:1 -ac 2 -b:a:1 128k -c:a:0 copy -c:a:1 acc -c:v libx264 done/big_buck_bunny_720p_1mb.mkv -y -loglevel info -strict -2
+
+ffmpeg -i C:\Users\Jordan\Documents\GitHub\ffmpeg\videos\big_buck_bunny_720p_10mb.mkv -map 0:0 -map 0:1 -map 0:1 -ac 2 -b:a:1 128k -c:a:0 copy -c:a:1 acc -c:v libx264 done/big_buck_bunny_720p_10mb.mp4 -y -loglevel info -strict -2
+ffmpeg -i C:\Users\Jordan\Documents\GitHub\ffmpeg\videos\big_buck_bunny_720p_1mb.mkv -map 0:0 -map 0:1 -map 0:1 -ac 2 -b:a:1 128k -c:a:0 copy -c:a:1 acc -c:v libx264 done/big_buck_bunny_720p_1mb.mp4 -y -loglevel info -strict -2
